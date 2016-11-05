@@ -20,7 +20,7 @@
     </div>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="./welcome.php">Home</a></li>
-      <li><a href='./welcome.php' class='btn btn-info btn-lg'> <span class='glyphicon glyphicon-shopping-cart'></span>View Cart</a></li>
+      <li><a href='./viewCart.php' class='btn btn-info btn-lg'> <span class='glyphicon glyphicon-shopping-cart'></span>View Cart</a></li>
       <li><a href="./logout.php"><span class="glyphicon glyphicon-user"></span>logout</a></li>
     </ul>
   </div>

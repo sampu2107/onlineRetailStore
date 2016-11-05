@@ -10,6 +10,24 @@
   <link rel="stylesheet" href="css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+  window.onload = function(){
+	  var url = window.location.href;
+	  if(url == "http://localhost/onlineRetailStore/welcome.php" ){
+		  var element =  document.querySelector("#hide").style.display = "block";
+	  }else{
+	  var element =  document.querySelector("#hide").style.display = "none";
+	  }
+	}
+	</script> 
+<style>
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 70%;
+      margin: auto;
+  }
+  </style>
+	 
 </head>
 <body>
 <header>
@@ -47,7 +65,66 @@ while($row = mysqli_fetch_array($retval, MYSQLI_ASSOC))
 	$category_id = $row['category_id'];
 	echo "<li><a class='listStyle' href='./welcome.php?view_product=$category_id'>$category_name</a></li>";
 } 
-echo "</div>";
+echo "</div>";?>
+<div class='rightSide' id = 'hide'>
+<br>
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+
+      <div class="item active">
+        <img src="images/4.jpg" alt="Chania" width="460" height="345">
+        <div class="carousel-caption">
+          <h3>Clothes</h3>
+          <p>All clothes in one place!</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="images/1.jpg" alt="Chania" width="460" height="345">
+        <div class="carousel-caption">
+          <h3>Clothes</h3>
+          <p>All clothes in one place!</p>
+        </div>
+      </div>
+    
+      <div class="item">
+        <img src="images/5.jpg" alt="Flower" width="460" height="345">
+        <div class="carousel-caption">
+          <h3>Computers</h3>
+          <p>Best computers for low price!.</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="images/6.jpg" alt="Flower" width="460" height="345">
+        <div class="carousel-caption">
+          <h3>Sports</h3>
+          <p>All sporting goods at one stop!</p>
+        </div>
+      </div>
+  
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div></div>
+<?php
 if(isset($_GET['view_product'])) {
 	$category_id = mysqli_real_escape_string($db,$_GET['view_product']);
    $sql = "SELECT product_id,product_name,product_desc FROM product where category_id = '$category_id'";
@@ -58,6 +135,7 @@ if(! $retval )
   die('Could not get data: ' . mysql_error());
 }
 echo "<div class='rightSide'>";
+echo "<div id='show'>";
 echo "<div class='row'>";
 echo "<p style='font-style:italic;margin-left:25px;'>Welcome to Flopkart retail store:" . $login_session . "</p>";
 while($row = mysqli_fetch_array($retval, MYSQLI_ASSOC))
@@ -68,7 +146,7 @@ while($row = mysqli_fetch_array($retval, MYSQLI_ASSOC))
 			<p style='font-style:italic;margin-left:25px'>{$row['product_desc']} <br></p></div>";
     
 }
-echo "</div></div>";
+echo "</div></div></div>";
 }
 echo "</div>";
 ?>
